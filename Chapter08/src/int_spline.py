@@ -1,0 +1,20 @@
+from scipy.interpolate import spline
+from pylab import *
+
+xp = linspace(0, 1, 6)
+yp = sqrt(1-xp**2)
+xi = linspace(0, 1, 100)
+yi = interp(xi, xp, yp)
+ys = spline(xp, yp, xi)
+figure()
+hold(True)
+plot(xi, yi, '--', label='piecewise linear', lw=2)
+plot(xi, ys, '-', label='spline', lw=2)
+legend(loc='best')
+grid()
+title(r'Spline interpolation of $y=\sqrt{1-x^2}$')
+xlabel('x')
+ylabel('y')
+axis('scaled')
+axis([0, 1.2, 0, 1.2])
+show()
